@@ -69,3 +69,39 @@ alert('Im Working Im JS Im Beautiful Im worth it');
 // console.log(Object.gender);
 // Object.gender = "Female";
 // console.log(Object.gender);
+
+//JS에서 함수를 쓰는 방법
+// function sayHello(){
+//  console.log('Hello!');
+// }
+// sayHello();
+// console.log("Hi!");
+
+//함수에 인자를 추가하기
+// function sayHello(name){
+//     console.log('Hello!', name);
+// }
+// sayHello("Cha");
+
+//백틱(``)을 사용하기
+// function sayHello(name, age){
+//     console.log(`Hello ${name} you are ${age} years old`);
+//     return `Hello ${name} you are ${age} years old`;
+// }
+
+// sayHello("Cha", 15);
+
+//greetCha는 sayHello 함수의 리턴 값처럼 다루어진다.
+// const greetCha = sayHello("Cha", 15);
+// console.log(greetCha);
+
+//Object안에 함수 만들기
+const calculator = {
+ plus: function(a,b){
+    return a + b;
+ }
+}
+
+const plus = calculator.plus(5,5);
+console.log(plus);
+

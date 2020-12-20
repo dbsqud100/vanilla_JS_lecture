@@ -62,11 +62,11 @@ function loadToDos(){
     if(toDos !== null){
         const parsedToDos = JSON.parse(toDos);
         //forEach안에 함수를 선언할 수도 있다.
-        parsedToDos.forEach(function(Todo){
-            paintToDo(Todo.text);
-        });
+        // parsedToDos.forEach(function(Todo){
+        //     paintToDo(Todo.text);
+        // });
         //아래와 같이 function을 따로 선언하는 것도 가능하다.
-        //parsedToDos.forEach(somthing);
+        parsedToDos.forEach(somthing);
     }
 }
 

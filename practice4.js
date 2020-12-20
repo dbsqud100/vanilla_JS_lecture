@@ -54,9 +54,9 @@ function handleSubmit(event){
     paintToDo(currentValue);
     toDoInput.value = "";
 }
-// function somthing(text){
-//     paintToDo(text.text);
-// }
+function somthing(text){
+    paintToDo(text.text);
+}
 function loadToDos(){
     const toDos = localStorage.getItem(TODOS_LS);
     if(toDos !== null){

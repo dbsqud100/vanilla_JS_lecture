@@ -4,7 +4,23 @@ const toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = `toDos`;
 
-const toDos = [];
+let toDos = [];
+
+function deleteToDo(event){
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    //filter는 array의 모든 아이템을 통해 함수를 실행하고 true인 아이템들만
+    //가지고 새로운 array를 만든다.
+    const cleanToDos = toDos.filter(function(toDo){
+        return toDo.id !== parseInt(li.id);
+    });
+    //toDos가 const이기 때문에 아래와 같은 코딩은 불가능하다.
+    //그렇기에 위의 cosnt를 let으로 변경시켜준다.
+    toDos = cleanToDos;
+    saveToDos();
+    console.log(cleanToDos);
+}
 
 function saveToDos(){
     //JSON.stringify는 자바스크립트 object를 string으로 바꿔준다.
@@ -17,6 +33,7 @@ function paintToDo(text){
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     delBtn.innerText = "X";
+    delBtn.addEventListener("click",deleteToDo);
     span.innerText = text;
     li.appendChild(span);
     li.appendChild(delBtn);
@@ -37,19 +54,19 @@ function handleSubmit(event){
     paintToDo(currentValue);
     toDoInput.value = "";
 }
-function somthing(text){
-    paintToDo(text.text);
-}
+// function somthing(text){
+//     paintToDo(text.text);
+// }
 function loadToDos(){
     const toDos = localStorage.getItem(TODOS_LS);
     if(toDos !== null){
         const parsedToDos = JSON.parse(toDos);
         //forEach안에 함수를 선언할 수도 있다.
-        // parsedToDos.forEach(function(Todo){
-        //     console.log(Todo.text);
-        // });
+        parsedToDos.forEach(function(Todo){
+            paintToDo(Todo.text);
+        });
         //아래와 같이 function을 따로 선언하는 것도 가능하다.
-        parsedToDos.forEach(somthing);
+        //parsedToDos.forEach(somthing);
     }
 }
 
